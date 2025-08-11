@@ -1,4 +1,4 @@
-// declaracion de arreglas
+aracion de arreglas
 const ingresos = [
   new Ingreso('Salario', 20000),
   new Ingreso('Venta auto', 50000),
@@ -176,6 +176,3 @@ window.agregarDato = () => {
   forma['valor'].value = '';
   forma['descripcion'].focus();
 };
-
-
-

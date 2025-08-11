@@ -1,0 +1,247 @@
+:root {
+  --green: #00d26a;
+  --red: #ff3b30;
+  --bg: #0a0f14;
+  --text: #ffffff;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+.cabecero {
+  background-image: url('img/purpleUniverse.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.presupuesto_titulo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.presupuesto_valor {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.presupuesto_ingreso,
+.presupuesto_egreso {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #fff;
+  max-width: 300px; /* ajusta el ancho máximo aquí */
+  margin: 0 auto 10px auto; /* centrado horizontal y margen inferior */
+}
+
+.presupuesto_ingreso {
+  background-color: var(--green);
+  margin-bottom: 10px;
+}
+
+.presupuesto_egreso {
+  background-color: var(--red);
+}
+
+.presupuesto_ingreso--texto,
+.presupuesto_egreso--texto {
+  text-transform: uppercase;
+}
+
+.derecha {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ====== FORMULARIO ====== */
+.barra-form {
+  width: min(960px, 92%);
+  margin: 12px auto 28px auto;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 130px 1fr 180px 54px;
+  gap: 10px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
+  backdrop-filter: blur(4px);
+}
+
+.select-tipo,
+.input-descripcion,
+.input-valor {
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: #0f141b;
+  color: var(--text);
+  padding: 12px 14px;
+  font-size: 15px;
+  transition: border .2s, box-shadow .2s, background .2s;
+}
+
+.select-tipo {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, .45) 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, .45) 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position: calc(100% - 18px) calc(50% + 2px),
+    calc(100% - 12px) calc(50% + 2px),
+    0 0;
+  background-size: 6px 6px, 6px 6px, 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.input-descripcion::placeholder,
+.input-valor::placeholder {
+  color: #94a3b8;
+  opacity: .8;
+}
+
+.select-tipo:focus,
+.input-descripcion:focus,
+.input-valor:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(0, 210, 106, .22);
+}
+
+.btn-confirm {
+  height: 44px;
+  width: 54px;
+  display: inline-grid;
+  place-items: center;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--green);
+  color: #58fc5b;
+  font-size: 20px;
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.btn-confirm:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .35);
+  color: #aafcac;
+}
+
+.btn-confirm:active {
+  transform: translateY(0) scale(.97);
+}
+
+.btn-confirm:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(13, 151, 47, 0.25);
+}
+
+@media (max-width: 900px) {
+  .barra-form {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "tipo valor"
+      "desc desc"
+      "btn  btn";
+    gap: 10px;
+  }
+
+  .select-tipo {
+    grid-area: tipo;
+  }
+
+  .input-valor {
+    grid-area: valor;
+  }
+
+  .input-descripcion {
+    grid-area: desc;
+  }
+
+  .btn-confirm {
+    grid-area: btn;
+    justify-self: center;
+    width: 64px;
+  }
+}
+
+/* ====== LISTA INGRESOS / EGRESOS ====== */
+.contenedor {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin: 20px auto;
+  width: min(1200px, 96%);
+}
+
+.ingreso,
+.egreso {
+  flex: 1;
+}
+
+.ingreso_titulo {
+  color: var(--green);
+}
+
+.egreso_titulo {
+  color: var(--red);
+}
+
+.elemento {
+  background-color: rgba(255, 255, 255, 0.05);
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.elemento_valor {
+  font-weight: bold;
+}
+
+.elemento_eliminar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #ff3b30;
+    transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+  cursor: pointer;
+
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.elemento {
+  animation: fadeInUp .3s ease forwards;
+}
+

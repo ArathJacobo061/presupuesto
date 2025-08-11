@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presupuesto</title>
+
+  <!-- CSS personalizado -->
+  <link rel="stylesheet" href="estilos.css">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+
+<body onload="cargarApp()">
+
+  <!-- CABECERO -->
+  <div class="cabecero">
+    <div class="presupuesto">
+      <div class="presupuesto_titulo">PRESUPUESTO DISPONIBLE</div>
+      <div class="presupuesto_valor" id="presupuesto">+0.00 MXN</div>
+
+      <div class="presupuesto_ingreso limpiarEstilos">
+        <div class="presupuesto_ingreso--texto">INGRESOS</div>
+        <div class="derecha">
+          <div class="presupuesto_ingreso--valor" id="ingresos">+0.00 MXN</div>
+          <div class="presupuesto_ingreso--porcentaje" id="porcentaje">&nbsp;</div>
+        </div>
+      </div>
+
+      <div class="presupuesto_egreso limpiarEstilos">
+        <div class="presupuesto_egreso--texto">EGRESOS</div>
+        <div class="derecha limpiarEstilos">
+          <div class="presupuesto_egreso--valor" id="egresos">-0.00 MXN</div>
+          <div class="presupuesto_egreso--porcentaje">0%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO -->
+ <!-- FORMULARIO -->
+<form id="forma" onsubmit="return false">
+  <div class="barra-form">
+    <!-- Tipo (+ / -) -->
+    <select class="select-tipo" id="tipo" aria-label="Tipo de movimiento">
+      <option value="ingreso" selected>Ingreso (+)</option>
+      <option value="egreso">Egreso (-)</option>
+    </select>
+
+    <!-- Descripción -->
+    <input
+      type="text"
+      class="input-descripcion"
+      id="descripcion"
+      placeholder="Agregar descripción"
+      aria-label="Descripción"
+    />
+
+    <!-- Valor -->
+    <input
+      type="number"
+      class="input-valor"
+      id="valor"
+      placeholder="Valor"
+      step="any"
+      aria-label="Valor"
+    />
+
+    <!-- Botón confirmar con el ícono correcto -->
+    <button class="btn-confirm" type="button" onclick="agregarDato()" aria-label="Agregar">
+      <i class="bi bi-check-circle-fill"></i>
+    </button>
+  </div>
+</form>
+
+
+  <!-- LISTAS -->
+  <div class="contenedor limpiarEstilos">
+
+    <!-- Ingresos -->
+    <div class="ingreso">
+      <h2 class="ingreso_titulo">Ingresos</h2>
+      <div id="lista-ingresos">
+        <!-- Los ingresos se insertan aquí desde app.js -->
+      </div>
+    </div>
+
+    <!-- Egresos -->
+    <div class="egreso">
+      <h2 class="egreso_titulo">Egresos</h2>
+      <div id="lista-egresos">
+        <!-- Los egresos se insertan aquí desde app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="Dato.js"></script>
+  <script src="Ingreso.js"></script>
+  <script src="Egreso.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
+
